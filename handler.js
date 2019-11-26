@@ -7,9 +7,18 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/tasks", function (request , response) {
+app.get("/tasks", function (request, response) {
   // Do the logic for getting all the tasks from the DB
-  response.status(200).send("Getting all the tasks! Yay");
+  response.status(200).send({
+    tasks: [
+      { id: 0001, taskDescription: "Search Product", completed: false, userId: 1 },
+      { id: 0002, taskDescription: "Check Availability of Product", completed: true, userId : 2},
+      { id: 0003, taskDescription: "check the delivery time and date", completed: false, userId : 1 },
+      { id: 0004, taskDescription: "Pay for the Product", completed: true, userId : 2 },
+      { id:0005, taskDescription: "check the invoice", completed: false, userId :2 },
+      { id: 0006, taskDescription: "check calender dates", completed: false, userId:1 }
+    ] 
+  });
 });
 
 app.post("/tasks", function (request, response) {
